@@ -8,6 +8,7 @@ import com.intellij.openapi.ide.CopyPasteManager;
 import org.yseasony.sqlgenerator.SqlGenerator;
 import org.yseasony.sqlgenerator.TableInfo;
 import org.yseasony.sqlgenerator.Util;
+import org.yseasony.sqlgenerator.format.BasicFormatterImpl;
 
 import java.awt.datatransfer.StringSelection;
 
@@ -65,7 +66,10 @@ public abstract class BaseSqlGenerator extends AnAction {
             sql.append(Util.LF);
         }
 
-        CopyPasteManager.getInstance().setContents(new StringSelection(sql.toString()));
+        BasicFormatterImpl formatter = new BasicFormatterImpl();
+        String formatSql = formatter.format(sql.toString());
+
+        CopyPasteManager.getInstance().setContents(new StringSelection(formatSql));
     }
 
     protected SqlGenerator createSqlGenerator(TableInfo tableInfo) {

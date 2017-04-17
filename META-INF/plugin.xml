@@ -59,6 +59,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <applicationConfigurable instance="org.yseasony.sqlgenerator.config.SqlGeneratorConfigurable"
+                                 id="SqlGeneratorConfigurable"
+                                 displayName="SqlGenerator"/>
     </extensions>
 
     <application-components>
